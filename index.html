@@ -515,28 +515,8 @@
     }
 
     .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-image {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .about-image img {
-      width: 100%;
-      height: auto;
       display: block;
-      transition: var(--transition);
-    }
-
-    .about-image:hover img {
-      transform: scale(1.05);
+      width: 100%;
     }
 
     .about-text h3 {
@@ -547,6 +527,7 @@
 
     .about-text p {
       margin-bottom: 1.5rem;
+      max-width: 960px;
     }
 
     .about-skills {
@@ -994,16 +975,11 @@
         top: 0;
       }
 
-      .about-content,
       .contact-content {
         grid-template-columns: 1fr;
         gap: 3rem;
       }
 
-      .about-image {
-        order: -1;
-      }
-      
       .timeline {
         padding-left: 1.2rem;
       }
@@ -1265,9 +1241,6 @@
             <span class="skill-tag">Kdenlive</span>
             <span class="skill-tag">Canva</span>
           </div>
-        </div>
-        <div class="about-image">
-          <img src="Manideep.png" alt="Donkena Manideep">
         </div>
       </div>
     </div>
