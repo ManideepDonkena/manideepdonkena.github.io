@@ -1,0 +1,282 @@
+# Portfolio Upgrade Implementation Plan
+
+## Overview
+
+Comprehensive upgrade of Donkena Manideep's research portfolio to fix critical bugs, organize assets, enhance project showcase with AI-generated images, and add new sections for posters, videos, and detailed project pages.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Asset Collection Needed**
+> - Please provide posters you've created (file paths or indicate which folder they're in)
+> - Please provide video links or files
+> - Please list any websites/apps you'd like to showcase beyond GitHub repos
+> - Confirm if you want individual project detail pages or enhanced cards on main page
+
+## Proposed Changes
+
+### Phase 1: Critical Bug Fixes & Asset Organization
+
+#### [MODIFY] [index.html](file:///d:/Manideep/GITHUB/manideepdonkena.github.io/index.html)
+
+**Critical Fixes:**
+- Line 2114: Change `"Hardik Sharma"` to `"Donkena Manideep"` in copyright JavaScript
+- Line 1127: Update `resume.pdf` to [RESUME.pdf](file:///d:/Manideep/GITHUB/manideepdonkena.github.io/RESUME.pdf) (correct filename)
+- Line 1153: Verify [Manideep.png](file:///d:/Manideep/GITHUB/manideepdonkena.github.io/Manideep.png) reference (already exists ✓)
+
+**SEO & Meta Tags** (add in `<head>` after line 6):
+```html
+<meta name="description" content="Donkena Manideep - MTech Electrical Engineering researcher at IIT Kanpur specializing in Power Electronics, Wireless Power Transfer, and AI-assisted modeling">
+<meta name="keywords" content="Electrical Engineering, Power Electronics, WPT, IIT Kanpur, Machine Learning, Electric Vehicles">
+<meta name="author" content="Donkena Manideep">
+<meta property="og:title" content="Donkena Manideep - Research Portfolio">
+<meta property="og:description" content="MTech researcher at IIT Kanpur specializing in Power Electronics and AI applications">
+<meta property="og:image" content="Manideep.png">
+<meta property="og:url" content="https://manideepdonkena.github.io">
+<meta name="twitter:card" content="summary_large_image">
+```
+
+**Contact Form Integration** (replace lines 1816-1830):
+```html
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <div class="form-group">
+    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+  </div>
+  <div class="form-group">
+    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+  </div>
+  <div class="form-group">
+    <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+  </div>
+  <button type="submit" class="btn">Send Message</button>
+</form>
+```
+
+**Enhanced Alt Text** for project images (lines 1302-1437):
+- Add descriptive alt text to each project image beyond generic descriptions
+
+---
+
+### Phase 2: Folder Structure & Asset Organization
+
+#### [NEW] Directory Structure
+```
+manideepdonkena.github.io/
+├── assets/
+│   ├── images/
+│   │   ├── profile/
+│   │   │   └── Manideep.png (move existing)
+│   │   ├── projects/
+│   │   │   ├── wpt_project.jpg (move existing)
+│   │   │   ├── beluga_bol_project.jpg (move existing)
+│   │   │   ├── math_tools_project.jpg (move existing)
+│   │   │   ├── sgd_project.jpg (move existing)
+│   │   │   ├── bcs_project.jpg (move existing)
+│   │   │   ├── basis_learning_project.jpg (move existing)
+│   │   │   └── [new AI-generated images for other repos]
+│   │   ├── posters/
+│   │   │   └── [user's poster files]
+│   │   └── icons/
+│   │       └── favicon.png (to be created)
+│   ├── videos/
+│   │   └── [user's video files or links]
+│   ├── documents/
+│   │   └── RESUME.pdf (move existing)
+│   └── websites/
+│       └── [screenshots or links to live sites]
+├── pages/
+│   ├── projects.html (optional detailed project pages)
+│   ├── gallery.html (posters & media)
+│   └── contact.html (standalone contact page - optional)
+├── index.html
+└── README.md
+```
+
+---
+
+### Phase 3: GitHub Repository Data & AI Image Generation
+
+**Process:**
+1. Fetch all 34 GitHub repositories from ManideepDonkena profile
+2. Extract repository name, description, topics/tags, stars, language
+3. For each repo without an image, generate one using AI with:
+   - Repository name
+   - Description/purpose
+   - Main technologies
+   - Visual style: modern, technical, professional
+
+**Repositories to Process** (based on current portfolio):
+- ✓ Beluga_BOL (has image)
+- ✓ Mathematical-Tools-For-Data-Science (has image)
+- ✓ SGD-From-Scratch (has image)
+- ✓ BCS-secy-task (has image)
+- ✓ BasisOfLearning (has image)
+- ○ ~28 other repositories (need images)
+
+---
+
+### Phase 4: Enhanced Project Showcase
+
+#### [MODIFY] [index.html](file:///d:/Manideep/GITHUB/manideepdonkena.github.io/index.html) - Projects Section
+
+**Current:** Lines 1294-1472  
+**Enhancement:** Expand project grid to include all repositories with:
+- AI-generated thumbnail images
+- Repository stats (stars, forks, language)
+- Direct links to repo and live demo (if available)
+- Better descriptions from repo metadata
+
+**Example Enhanced Project Card:**
+```html
+<div class="project-card">
+  <div class="project-image">
+    <img src="assets/images/projects/repo_name.jpg" alt="Descriptive alt text">
+    <div class="project-stats">
+      <span>⭐ 5</span>
+      <span>🔧 Python</span>
+    </div>
+  </div>
+  <div class="project-content">
+    <h3 class="project-title">Repository Name</h3>
+    <div class="project-tags">
+      <span class="project-tag">Tag 1</span>
+      <span class="project-tag">Tag 2</span>
+    </div>
+    <p class="project-description">Repository description...</p>
+    <div class="project-links">
+      <a href="repo_url" target="_blank">GitHub</a>
+      <a href="demo_url" target="_blank">Live Demo</a>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### Phase 5: New Sections
+
+#### [NEW] Posters & Media Gallery Section (before Contact section)
+
+```html
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <h2 class="section-title">Posters & Media</h2>
+    <p class="section-subtext">Research posters, presentations, and video content showcasing my work</p>
+    
+    <div class="gallery-tabs">
+      <button class="tab-btn active" data-tab="posters">Posters</button>
+      <button class="tab-btn" data-tab="videos">Videos</button>
+      <button class="tab-btn" data-tab="websites">Websites</button>
+    </div>
+    
+    <div class="gallery-content">
+      <!-- Posters Grid -->
+      <div class="tab-content active" id="posters">
+        <div class="posters-grid">
+          <!-- Poster items will be added based on user's files -->
+        </div>
+      </div>
+      
+      <!-- Videos Grid -->
+      <div class="tab-content" id="videos">
+        <div class="videos-grid">
+          <!-- Video embeds will be added based on user's links -->
+        </div>
+      </div>
+      
+      <!-- Websites Showcase -->
+      <div class="tab-content" id="websites">
+        <div class="websites-grid">
+          <!-- Website screenshots/links will be added -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+**CSS Additions** for gallery (in `<style>` section):
+- Gallery grid layouts
+- Tab navigation styling
+- Lightbox modal for poster viewing
+- Video embed responsive containers
+
+---
+
+### Phase 6: Additional Improvements
+
+#### [NEW] [favicon.png](file:///d:/Manideep/GITHUB/manideepdonkena.github.io/assets/icons/favicon.png)
+- Generate favicon from initials "MD" or use a suitable icon
+
+#### [MODIFY] Navigation (line 1096-1103)
+Add new gallery link:
+```html
+<div class="nav-links">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#education">Education</a>
+  <a href="#positions">Positions</a>
+  <a href="#contact">Contact</a>
+</div>
+```
+
+## Verification Plan
+
+### Automated Verifications
+1. **Link Validation**: 
+   ```bash
+   # Check all internal links
+   grep -o 'href="#[^"]*"' index.html | sort -u
+   ```
+
+2. **Image Path Validation**:
+   ```bash
+   # Verify all image files exist
+   grep -o 'src="[^"]*\\.\\(jpg\\|png\\|jpeg\\)"' index.html
+   ```
+
+### Manual Verification
+1. **Visual Testing**:
+   - Open [index.html](file:///d:/Manideep/GITHUB/manideepdonkena.github.io/index.html) in browser
+   - Check copyright shows "Donkena Manideep"
+   - Verify all images load correctly
+   - Test contact form submission
+   - Click all navigation links
+   - Test mobile responsive design (resize browser)
+
+2. **Cross-browser Testing**:
+   - Test in Chrome, Firefox, Edge
+   - Verify mobile menu on small screen (< 768px width)
+
+3. **Gallery Functionality**:
+   - Click tab buttons to switch between Posters/Videos/Websites
+   - Click poster to open lightbox
+   - Play embedded videos
+   - Verify all gallery items display correctly
+
+### User Manual Testing Required
+- [ ] Submit contact form and confirm email is received
+- [ ] Download resume and verify it opens correctly
+- [ ] Click all project GitHub links to verify correctness
+- [ ] Review AI-generated project images for accuracy
+- [ ] Verify poster images display correctly in gallery
+- [ ] Test video embeds play correctly
+- [ ] Confirm all content is accurate and represents your work
+
+---
+
+## Questions for User
+
+1. **Formspree Setup**: Do you want me to set up Formspree for the contact form, or do you prefer another service?
+2. **Poster Files**: Where are your poster files located? Can you provide paths or move them to a folder?
+3. **Video Links**: Please provide YouTube/Vimeo links or video files you want to showcase
+4. **Websites/Apps**: Beyond GitHub repos, which websites or apps have you built that you want to showcase?
+5. **Project Detail Pages**: Do you want individual detail pages for each project, or enhanced cards on the main page?
+6. **Favicon**: Would you like a simple "MD" favicon or something more custom?
+
+Please answer these questions so I can proceed with implementation!

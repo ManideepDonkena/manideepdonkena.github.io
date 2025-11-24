@@ -1,0 +1,34 @@
+# Portfolio Upgrade & Enhancement Task
+
+## Phase 1: Critical Fixes
+- [x] Fix copyright bug (line 2114) - N/A (only in comment)
+- [x] Update resume link to use assets folder
+- [x] Update profile image path
+- [/] Add SEO meta tags
+- [ ] Implement functional contact form (Formspree)
+
+## Phase 2: Folder Structure
+- [x] Create assets/images/projects/
+- [x] Create assets/images/posters/
+- [x] Create assets/images/profile/
+- [x] Create assets/images/icons/
+- [x] Create assets/videos/
+- [x] Create assets/documents/
+- [x] Move existing files to organized folders
+- [x] Create video_links.txt for user
+- [x] Create poster README for user
+
+## Phase 3: AI Image Generation
+- [ ] Generate images for repos (service unavailable - will retry)
+- [ ] Create favicon
+
+## Phase 4: Update Portfolio
+- [/] Update image paths in HTML
+- [ ] Add new project cards for all repos
+- [ ] Create project detail pages
+- [ ] Add gallery section
+
+## Phase 5: Polish
+- [ ] Test all links
+- [ ] Verify images load
+- [ ] Browser testing
