@@ -719,6 +719,51 @@
       gap: 0.3rem;
     }
 
+    /* Blog previews */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .blog-card {
+      background: #fff;
+      border: 1px solid rgba(11, 31, 58, 0.08);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 12px 22px rgba(11, 31, 58, 0.08);
+      transition: var(--transition);
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 28px rgba(11, 31, 58, 0.12);
+    }
+
+    .blog-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .blog-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .blog-link {
+      font-weight: 600;
+      color: var(--secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
     /* Experience Section */
     .experience {
       background-color: #f1f5f9;
@@ -1214,13 +1259,14 @@
       <nav>
         <a href="#home" class="logo">Manideep Donkena</a>
         <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#education">Education</a>
-          <a href="#positions">Positions</a>
-          <a href="#contact">Contact</a>
-        </div>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#positions">Positions</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
         <div class="mobile-menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1250,6 +1296,7 @@
           <div class="hero-btns">
             <a href="assets/documents/RESUME.pdf" class="btn">Download Resume</a>
             <a href="#contact" class="btn btn-outline">Contact Me</a>
+            <a href="blog.html" class="btn btn-outline">Read Blog</a>
           </div>
           <div class="hero-social">
             <a href="https://github.com/ManideepDonkena" target="_blank" rel="noopener" title="GitHub">
@@ -1445,23 +1492,21 @@
       <p class="section-subtext">Select repositories highlighting wireless power transfer modeling, ML fundamentals, and student-led research.</p>
       <div class="projects-grid">
         <article class="project-card">
-          <div class="project-image placeholder">
-            <span>BCS Research</span>
+          <div class="project-image">
+            <img src="assets/images/projects/wpt_project.jpg" alt="SEE633 Power Electronics for EVs">
           </div>
           <div class="project-content">
-            <h3 class="project-title">BCS Secretary Task</h3>
+            <h3 class="project-title">SEE633 EV Power Electronics</h3>
             <div class="project-tags">
-              <span class="project-tag">Brain &amp; Cognitive Society</span>
-              <span class="project-tag">Jupyter Notebook</span>
-              <span class="project-tag">Research</span>
-              <span class="project-tag">IIT Kanpur</span>
+              <span class="project-tag">EV</span>
+              <span class="project-tag">Power Electronics</span>
+              <span class="project-tag">PSIM</span>
             </div>
             <p class="project-description">
-              Built as part of my role as Secretary of the Brain and Cognitive Society. Contains research
-              implementations and analysis for cognitive science and neuroscience applications using computational methods.
+              Course project exploring multilevel topologies for traction inverters and low-voltage auxiliary output. Includes MMC/CHB simulations with harmonic analysis and modulation trade-offs.
             </p>
             <div class="project-links">
-              <a href="https://github.com/ManideepDonkena/BCS-secy-task" target="_blank" rel="noopener"
+              <a href="https://github.com/ManideepDonkena/SEE633-POWER-ELECTRONICS-FOR-ELECTRIC-VEHICLES-Course-Project" target="_blank" rel="noopener"
                 title="View Repository">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1476,23 +1521,79 @@
         </article>
 
         <article class="project-card">
-          <div class="project-image placeholder">
-            <span>Learning Fundamentals</span>
+          <div class="project-image">
+            <img src="assets/images/projects/beluga_bol_project.jpg" alt="Controller Design for Power Converters">
           </div>
           <div class="project-content">
-            <h3 class="project-title">Basis of Learning</h3>
+            <h3 class="project-title">Controller Design for Converters</h3>
             <div class="project-tags">
-              <span class="project-tag">Machine Learning</span>
-              <span class="project-tag">Fundamentals</span>
-              <span class="project-tag">Jupyter Notebook</span>
-              <span class="project-tag">Educational</span>
+              <span class="project-tag">Control</span>
+              <span class="project-tag">Bode/Root Locus</span>
+              <span class="project-tag">MATLAB</span>
             </div>
             <p class="project-description">
-              Forked repository focused on core machine learning concepts and implementations. Includes educational
-              materials and code examples covering theoretical and practical aspects of key algorithms and techniques.
+              Classical controller design exercises for DC-DC converters: modeling, compensator tuning, and robustness checks with frequency-domain techniques.
             </p>
             <div class="project-links">
-              <a href="https://github.com/ManideepDonkena/BasisOfLearning" target="_blank" rel="noopener"
+              <a href="https://github.com/ManideepDonkena/Controller_Design_For_Power_Converters" target="_blank" rel="noopener"
+                title="View Repository">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                GitHub Repo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="assets/images/projects/sgd_project.jpg" alt="SGD from scratch">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">SGD From Scratch</h3>
+            <div class="project-tags">
+              <span class="project-tag">Optimization</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">ML</span>
+            </div>
+            <p class="project-description">
+              Numpy-first walkthrough of stochastic gradient descent and learning rate schedules with visualizations of convergence behavior on toy problems.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/ManideepDonkena/SGD-From-Scratch" target="_blank" rel="noopener"
+                title="View Repository">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                GitHub Repo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="assets/images/projects/nano_banana.svg" alt="Audio classifier ConvNet with a banana icon">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Audio Classifier (ConvNet)</h3>
+            <div class="project-tags">
+              <span class="project-tag">Signal Processing</span>
+              <span class="project-tag">CNN</span>
+              <span class="project-tag">Python</span>
+            </div>
+            <p class="project-description">
+              Mel-spectrogram pipeline and lightweight CNN for environmental sound classification. Includes data prep, augmentation, and evaluation notebooks.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/ManideepDonkena/audio-classifier-convNet" target="_blank" rel="noopener"
                 title="View Repository">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1693,6 +1794,36 @@
             <p>Secured <strong>A* grade</strong> in 3 courses, awarded to top 1-2% students in each course</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="section" id="blog">
+    <div class="container">
+      <h2 class="section-title">Latest Writing</h2>
+      <p class="section-subtext">Deep dives on EV converter design, wireless power transfer, and ML workflows I use in research.</p>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-meta">Mar 2025 • Wireless Power Transfer</div>
+          <h3 class="blog-title">Transfer Learning for Misaligned WPT Coils</h3>
+          <p class="project-description">
+            Notes from my thesis work on pairing analytical baselines with ML to keep parameter estimation error below 4% under lateral misalignment.
+          </p>
+          <a class="blog-link" href="blog/wpt-transfer-learning.html">Read post →</a>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-meta">Feb 2025 • Power Electronics</div>
+          <h3 class="blog-title">Designing Dual-Output MMC for EV Aux Power</h3>
+          <p class="project-description">
+            Building an MMC that drives traction while supplying regulated 12 V without extra hardware, plus what the simulations taught me.
+          </p>
+          <a class="blog-link" href="blog/mmc-ev-design.html">Read post →</a>
+        </article>
+      </div>
+      <div class="section-cta">
+        <a href="blog.html" class="btn btn-outline">View all posts</a>
       </div>
     </div>
   </section>
@@ -1936,6 +2067,7 @@
           <a href="#education">Education</a>
           <a href="#achievements">Achievements</a>
           <a href="#positions">Positions</a>
+          <a href="blog.html">Blog</a>
           <a href="#contact">Contact</a>
         </div>
         <p class="footer-copyright">© 2025 Donkena Manideep. All rights reserved.</p>
@@ -2011,7 +2143,7 @@
     }, observerOptions);
 
     // Observe all timeline items and project cards
-    document.querySelectorAll('.timeline-item, .project-card, .publication-item, .podcast-item').forEach(item => {
+    document.querySelectorAll('.timeline-item, .project-card, .publication-item, .podcast-item, .blog-card').forEach(item => {
       item.style.opacity = '0';
       item.style.transform = 'translateY(20px)';
       item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

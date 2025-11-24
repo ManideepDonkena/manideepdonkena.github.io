@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transfer Learning for Misaligned WPT Coils - Manideep Donkena</title>
+  <meta name="description" content="Notes on combining analytical coil models with machine learning to keep estimation error low under misalignment.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+    :root {
+      --primary: #0b1f3a;
+      --secondary: #2a4b8d;
+      --accent: #c47e2c;
+      --ink: #1b2733;
+      --paper: #f7f6f1;
+      --muted: #5b6b82;
+      --highlight: rgba(42, 75, 141, 0.08);
+      --divider: rgba(11, 31, 58, 0.1);
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    header {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 2.2rem 1.5rem 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--divider);
+      box-shadow: 0 20px 36px rgba(11, 31, 58, 0.12);
+    }
+
+    h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin: 1.8rem 0 0.6rem;
+      color: var(--primary);
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin: 0 0 1rem 1.5rem;
+      color: var(--muted);
+    }
+
+    .tag {
+      background: var(--highlight);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="../index.html">Manideep Donkena</a>
+  </header>
+
+  <main>
+    <h1>Transfer Learning for Misaligned WPT Coils</h1>
+    <div class="meta">
+      <span>Published Mar 2025</span>
+      <span class="tag">WPT</span>
+      <span class="tag">ML</span>
+      <span class="tag">Research Notes</span>
+    </div>
+
+    <p>Misalignment is the enemy of reliable wireless power transfer. Analytical models are fast but they start to drift as lateral offsets grow. Pure ML models learn the drift but need a lot of data. This note covers a blended approach I used for my M.Tech thesis to keep estimation error below 4%.</p>
+
+    <h2>Dataset & Preprocessing</h2>
+    <ul>
+      <li>Litz-wire and ferrite-core rectangular coils with lateral offsets up to 80 mm.</li>
+      <li>Base parameters from analytical model: self/mutual inductance, coupling, AC resistance.</li>
+      <li>Augmentations: Gaussian noise on measured voltages/currents and randomized coil spacing.</li>
+      <li>Targets: corrected inductance and resistance values validated against lab measurements.</li>
+    </ul>
+
+    <h2>Model Stack</h2>
+    <p>Start with the analytical outputs as features, then fine-tune a shallow regressor:</p>
+    <ul>
+      <li><strong>Backbone:</strong> pretrained MLP on synthetic coil data.</li>
+      <li><strong>Heads:</strong> two regression heads for L and R to decouple error surfaces.</li>
+      <li><strong>Loss:</strong> Huber with per-parameter weighting to prioritize mutual inductance accuracy.</li>
+    </ul>
+
+    <h2>Results</h2>
+    <ul>
+      <li>Error under 4% across offsets; improved efficiency by ~2% over purely analytical baselines.</li>
+      <li>Transfer learning cut the required measured samples by ~60% compared to training from scratch.</li>
+      <li>Model stays lightweight enough for rapid sweeps across coil geometries.</li>
+    </ul>
+
+    <h2>Takeaways</h2>
+    <p>Combining physics-informed priors with ML keeps the model grounded and reduces data needs. The analytical model is the launchpad; the learner cleans up the edge cases caused by misalignment.</p>
+  </main>
+
+  <footer>
+    <a href="mmc-ev-design.html">Next: Designing Dual-Output MMC for EV Aux Power →</a>
+    <br><br>
+    Back to <a href="../blog.html">all posts</a> or <a href="../index.html#contact">say hello</a>.
+  </footer>
+</body>
+
+</html>

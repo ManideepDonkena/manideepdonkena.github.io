@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing Dual-Output MMC for EV Aux Power - Manideep Donkena</title>
+  <meta name="description" content="How to generate traction and low-voltage aux power from one MMC without extra converters.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+    :root {
+      --primary: #0b1f3a;
+      --secondary: #2a4b8d;
+      --accent: #c47e2c;
+      --ink: #1b2733;
+      --paper: #f7f6f1;
+      --muted: #5b6b82;
+      --highlight: rgba(42, 75, 141, 0.08);
+      --divider: rgba(11, 31, 58, 0.1);
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    header {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 2.2rem 1.5rem 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--divider);
+      box-shadow: 0 20px 36px rgba(11, 31, 58, 0.12);
+    }
+
+    h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin: 1.8rem 0 0.6rem;
+      color: var(--primary);
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin: 0 0 1rem 1.5rem;
+      color: var(--muted);
+    }
+
+    .tag {
+      background: var(--highlight);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="../index.html">Manideep Donkena</a>
+  </header>
+
+  <main>
+    <h1>Designing Dual-Output MMC for EV Aux Power</h1>
+    <div class="meta">
+      <span>Published Feb 2025</span>
+      <span class="tag">EV</span>
+      <span class="tag">MMC</span>
+      <span class="tag">Simulation</span>
+    </div>
+
+    <p>During my internship at Jaguar Land Rover TBSI we explored ways to avoid a dedicated DC-DC converter for auxiliary loads. The idea: run the traction MMC and pull a stable 12 V output from the same hardware.</p>
+
+    <h2>Architecture</h2>
+    <ul>
+      <li>Modular multilevel converter supplying 400 V AC to the motor inverter.</li>
+      <li>Tapped auxiliary output with additional modulation to regulate 12 V DC.</li>
+      <li>Common control layer to coordinate arm capacitor balancing and auxiliary regulation.</li>
+    </ul>
+
+    <h2>Simulation Notes</h2>
+    <ul>
+      <li><strong>Tools:</strong> PSIM models for MMC and harmonic analysis of the auxiliary branch.</li>
+      <li><strong>Strategy:</strong> phase-shifted PWM for traction plus low-frequency injection to shape the DC bus seen by the aux filter.</li>
+      <li><strong>Outcome:</strong> clean 12 V rail with ripple under 2% while traction THD stayed within spec.</li>
+    </ul>
+
+    <h2>What Worked</h2>
+    <p>Keeping the aux control slow (bandwidth below arm balancing) prevented interference. A simple PI loop on the aux branch plus notch filtering on the traction side kept interactions contained.</p>
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li>Thermal check on arm capacitors under combined load.</li>
+      <li>Hardware validation with DC-link perturbations and step loads on the aux branch.</li>
+      <li>Exploring interleaved aux branches for redundancy.</li>
+    </ul>
+  </main>
+
+  <footer>
+    <a href="wpt-transfer-learning.html">← Previous: Transfer Learning for Misaligned WPT Coils</a>
+    <br><br>
+    Back to <a href="../blog.html">all posts</a> or <a href="../index.html#contact">say hello</a>.
+  </footer>
+</body>
+
+</html>

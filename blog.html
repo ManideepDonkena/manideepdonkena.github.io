@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manideep Donkena - Blog</title>
+  <meta name="description" content="Technical notes on power electronics, wireless power transfer, and machine learning workflows.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+    :root {
+      --primary: #0b1f3a;
+      --secondary: #2a4b8d;
+      --accent: #c47e2c;
+      --ink: #1b2733;
+      --paper: #f7f6f1;
+      --muted: #5b6b82;
+      --highlight: rgba(42, 75, 141, 0.08);
+      --divider: rgba(11, 31, 58, 0.1);
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--divider);
+      z-index: 10;
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .page-intro {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 720px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--divider);
+      padding: 1.5rem;
+      box-shadow: 0 12px 22px rgba(11, 31, 58, 0.08);
+      transition: var(--transition);
+      display: grid;
+      gap: 0.7rem;
+      min-height: 220px;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 28px rgba(11, 31, 58, 0.12);
+    }
+
+    .blog-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .blog-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: var(--highlight);
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 2rem 1rem 3rem;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="index.html">Manideep Donkena</a>
+      <div class="nav-links">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Writing & Notes</h1>
+    <p class="page-intro">Short, technical writeups on EV converters, wireless power transfer, and the machine learning tooling I use for parameter estimation.</p>
+
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-meta">Mar 2025 • Wireless Power Transfer</div>
+        <h2 class="blog-title">Transfer Learning for Misaligned WPT Coils</h2>
+        <p>Pairing analytical coil models with ML to stay under 4% estimation error when lateral offsets creep in. Includes data prep flow and key ablations.</p>
+        <div class="blog-meta">
+          <span class="tag">WPT</span>
+          <span class="tag">ML</span>
+          <span class="tag">Research</span>
+        </div>
+        <a href="blog/wpt-transfer-learning.html">Read post →</a>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-meta">Feb 2025 • Power Electronics</div>
+        <h2 class="blog-title">Designing Dual-Output MMC for EV Aux Power</h2>
+        <p>How to squeeze clean 12 V aux power from the traction MMC without extra converters, plus what the harmonic spectrum told us.</p>
+        <div class="blog-meta">
+          <span class="tag">EV</span>
+          <span class="tag">MMC</span>
+          <span class="tag">Simulation</span>
+        </div>
+        <a href="blog/mmc-ev-design.html">Read post →</a>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    Back to <a href="index.html#home">portfolio</a> · Say hi at <a href="mailto:manideep21@iitk.ac.in">manideep21@iitk.ac.in</a>
+  </footer>
+</body>
+
+</html>
